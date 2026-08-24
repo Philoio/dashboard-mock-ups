@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import type { RoadmapFilters, SavedView, ViewMode, ZoomLevel } from '../types/roadmap';
+import type { RoadmapFilters, SavedView, ZoomLevel } from '../types/roadmap';
 import { defaultFilters } from '../data/roadmapData';
 
 const STORAGE_KEY = 'estate-roadmap-saved-views-v2';
@@ -10,7 +10,6 @@ function sanitizeView(raw: Partial<SavedView> & { filters: RoadmapFilters }): Sa
     name: raw.name ?? 'Untitled view',
     filters: raw.filters,
     zoom: raw.zoom ?? 'quarter',
-    viewMode: raw.viewMode ?? 'timeline',
     createdAt: raw.createdAt ?? new Date().toISOString(),
     isDefault: raw.isDefault,
   };
@@ -36,13 +35,12 @@ export function useSavedViews(initialActiveId: string | null = null) {
   }, [views]);
 
   const saveView = useCallback(
-    (name: string, filters: RoadmapFilters, zoom: ZoomLevel, viewMode: ViewMode) => {
+    (name: string, filters: RoadmapFilters, zoom: ZoomLevel) => {
       const view: SavedView = {
         id: `view-${Date.now()}`,
         name: name.trim() || 'Untitled view',
         filters,
         zoom,
-        viewMode,
         createdAt: new Date().toISOString(),
         isDefault: views.length === 0,
       };
@@ -89,7 +87,6 @@ export function buildShareLink(view: Partial<SavedView> & { filters: RoadmapFilt
     name: view.name ?? 'Shared roadmap',
     filters: view.filters,
     zoom: view.zoom ?? 'quarter',
-    viewMode: view.viewMode ?? 'timeline',
   };
   const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
   return `${window.location.origin}${window.location.pathname}?share=${encoded}`;
@@ -116,7 +113,6 @@ export function readSharePayload(): SavedView | null {
 export interface InitialRoadmapState {
   filters: RoadmapFilters;
   zoom: ZoomLevel;
-  viewMode: ViewMode;
   activeViewId: string | null;
   readOnlyShare: boolean;
   shareNotice: string | null;
@@ -128,7 +124,6 @@ export function getInitialRoadmapState(): InitialRoadmapState {
     return {
       filters: shared.filters,
       zoom: shared.zoom,
-      viewMode: shared.viewMode,
       activeViewId: null,
       readOnlyShare: true,
       shareNotice: `Viewing shared roadmap “${shared.name}” (read-only).`,
@@ -141,7 +136,6 @@ export function getInitialRoadmapState(): InitialRoadmapState {
     return {
       filters: def.filters,
       zoom: def.zoom,
-      viewMode: def.viewMode,
       activeViewId: def.id,
       readOnlyShare: false,
       shareNotice: null,
@@ -151,7 +145,6 @@ export function getInitialRoadmapState(): InitialRoadmapState {
   return {
     filters: { ...defaultFilters, types: [...defaultFilters.types] },
     zoom: 'quarter',
-    viewMode: 'timeline',
     activeViewId: null,
     readOnlyShare: false,
     shareNotice: null,

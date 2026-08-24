@@ -7,7 +7,7 @@ import {
   type InitialRoadmapState,
 } from '../hooks/useSavedViews';
 import { usePresentation } from '../hooks/usePresentation';
-import type { RoadmapFilters, RoadmapItem, ViewMode, ZoomLevel } from '../types/roadmap';
+import type { RoadmapFilters, RoadmapItem, ZoomLevel } from '../types/roadmap';
 import { cloneItems, filterItems, withAncestors } from '../utils/roadmap';
 import { RoadmapFiltersBar } from '../components/roadmaps/RoadmapFiltersBar';
 import { RoadmapTimeline } from '../components/roadmaps/RoadmapTimeline';
@@ -33,7 +33,6 @@ export function RoadmapsPage() {
 
   const [filters, setFilters] = useState<RoadmapFilters>(initial.filters);
   const [zoom, setZoom] = useState<ZoomLevel>(initial.zoom);
-  const [viewMode, setViewMode] = useState<ViewMode>(initial.viewMode);
   const [committedItems, setCommittedItems] = useState<RoadmapItem[]>(() => cloneItems(roadmapItems));
   const [draftItems, setDraftItems] = useState<RoadmapItem[] | null>(null);
   const [toast, setToast] = useState<string | null>(null);
@@ -70,7 +69,6 @@ export function RoadmapsPage() {
       name: views.find((view) => view.id === activeViewId)?.name ?? 'Roadmap view',
       filters,
       zoom,
-      viewMode,
     });
 
     try {
@@ -152,14 +150,6 @@ export function RoadmapsPage() {
         <div className="roadmap-controls">
           <div className="control-group">
             <SegmentedTabs
-              value={viewMode}
-              onChange={(id) => setViewMode(id as ViewMode)}
-              options={[
-                { id: 'timeline', label: 'Timeline' },
-                { id: 'gantt', label: 'Gantt' },
-              ]}
-            />
-            <SegmentedTabs
               value={zoom}
               onChange={(id) => setZoom(id as ZoomLevel)}
               options={[
@@ -212,17 +202,15 @@ export function RoadmapsPage() {
             activeViewId={activeViewId}
             filters={filters}
             zoom={zoom}
-            viewMode={viewMode}
             readOnlyShare={readOnlyShare}
             disabled={isEditing}
             onSave={(name) => {
-              saveView(name, filters, zoom, viewMode);
+              saveView(name, filters, zoom);
               setToast(`Saved personal view “${name}”.`);
             }}
             onSelect={(view) => {
               setFilters(view.filters);
               setZoom(view.zoom);
-              setViewMode(view.viewMode);
               setActiveViewId(view.id);
             }}
             onDelete={deleteView}
@@ -263,7 +251,6 @@ export function RoadmapsPage() {
       <RoadmapTimeline
         items={filtered}
         zoom={zoom}
-        viewMode={viewMode}
         isEditing={isEditing && !presentationMode}
         showDependencies={showDependencies}
         onUpdateItem={updateDraftItem}

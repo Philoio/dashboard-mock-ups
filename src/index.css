@@ -963,22 +963,6 @@ a {
   outline: 2px solid rgba(255, 92, 92, 0.65);
 }
 
-.bar.gantt {
-  height: 18px;
-  top: 17px;
-  border-radius: 4px;
-  padding: 0 6px;
-  font-size: 10px;
-}
-
-.bar.planning {
-  cursor: grab;
-}
-
-.bar.planning:active {
-  cursor: grabbing;
-}
-
 .bar.editing {
   cursor: grab;
 }

@@ -2,7 +2,6 @@ export type WorkItemType = 'Theme' | 'Initiative' | 'Epic' | 'Feature';
 export type WorkItemStatus = 'Backlog' | 'In Progress' | 'Done' | 'Blocked';
 export type RagStatus = 'Green' | 'Amber' | 'Red' | 'No Data';
 export type ZoomLevel = 'month' | 'quarter' | 'year';
-export type ViewMode = 'timeline' | 'gantt';
 
 export interface RoadmapItem {
   id: string;
@@ -38,7 +37,6 @@ export interface SavedView {
   name: string;
   filters: RoadmapFilters;
   zoom: ZoomLevel;
-  viewMode: ViewMode;
   createdAt: string;
   isDefault?: boolean;
 }

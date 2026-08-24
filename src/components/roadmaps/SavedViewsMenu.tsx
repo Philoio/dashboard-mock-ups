@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import type { RoadmapFilters, SavedView, ViewMode, ZoomLevel } from '../../types/roadmap';
+import type { RoadmapFilters, SavedView, ZoomLevel } from '../../types/roadmap';
 
 interface SavedViewsMenuProps {
   views: SavedView[];
   activeViewId: string | null;
   filters: RoadmapFilters;
   zoom: ZoomLevel;
-  viewMode: ViewMode;
   onSave: (name: string) => void;
   onSelect: (view: SavedView) => void;
   onDelete: (id: string) => void;
@@ -94,7 +93,7 @@ export function SavedViewsMenu({
                   {view.isDefault ? ' · default' : ''}
                 </div>
                 <div className="saved-item-meta">
-                  {view.viewMode} · {view.zoom} · {new Date(view.createdAt).toLocaleDateString()}
+                  {view.zoom} · {new Date(view.createdAt).toLocaleDateString()}
                 </div>
               </button>
               <div className="saved-actions">

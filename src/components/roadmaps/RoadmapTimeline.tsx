@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type MouseEvent as ReactMouseEvent } from 'react';
 import { roadmapDependencies } from '../../data/roadmapData';
-import type { Dependency, RoadmapItem, ViewMode, ZoomLevel } from '../../types/roadmap';
+import type { Dependency, RoadmapItem, ZoomLevel } from '../../types/roadmap';
 import {
   addDays,
   buildTree,
@@ -22,7 +22,6 @@ const ROW_HEIGHT = 52;
 interface RoadmapTimelineProps {
   items: RoadmapItem[];
   zoom: ZoomLevel;
-  viewMode: ViewMode;
   isEditing: boolean;
   showDependencies: boolean;
   onUpdateItem: (id: string, patch: Partial<Pick<RoadmapItem, 'title' | 'startDate' | 'endDate'>>) => void;
@@ -44,7 +43,6 @@ function buildDependencyPath(fromX: number, fromY: number, toX: number, toY: num
 export function RoadmapTimeline({
   items,
   zoom,
-  viewMode,
   isEditing,
   showDependencies,
   onUpdateItem,
@@ -84,7 +82,7 @@ export function RoadmapTimeline({
     const observer = new ResizeObserver(update);
     observer.observe(body);
     return () => observer.disconnect();
-  }, [rows.length, zoom, viewMode, showDependencies]);
+  }, [rows.length, zoom, showDependencies]);
 
   const toggle = (id: string) => {
     setExpanded((prev) => {
@@ -267,18 +265,14 @@ export function RoadmapTimeline({
                 )}
                 {renderBar && (
                   <div
-                    className={`bar ${item.type} ${viewMode === 'gantt' ? 'gantt' : ''} ${
-                      isEditing ? 'editing' : ''
-                    } ${overdue ? 'overdue' : ''}`}
+                    className={`bar ${item.type} ${isEditing ? 'editing' : ''} ${overdue ? 'overdue' : ''}`}
                     style={{ left: `${left}%`, width: `${width}%` }}
                     title={`${item.title}\n${formatDate(item.startDate)} → ${formatDate(item.endDate)}`}
                     onMouseDown={(event) => beginDrag(event, item, 'move')}
                   >
                     <div className="bar-progress" style={{ width: `${item.progress}%` }} />
                     <span className="bar-label">
-                      {viewMode === 'gantt'
-                        ? item.id
-                        : `${formatDate(item.startDate)} → ${formatDate(item.endDate)}`}
+                      {`${formatDate(item.startDate)} → ${formatDate(item.endDate)}`}
                     </span>
                     {isEditing && (
                       <>

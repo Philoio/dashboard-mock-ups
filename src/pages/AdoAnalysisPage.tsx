@@ -2,20 +2,9 @@ import { useState } from 'react';
 import { usePresentation } from '../hooks/usePresentation';
 import { SegmentedTabs } from '../components/ui/SegmentedTabs';
 import { RoadmapsPage } from './RoadmapsPage';
+import { TeamsPage } from './TeamsPage';
 
 type AdoTab = 'teams' | 'work' | 'roadmaps';
-
-function TeamsPlaceholder() {
-  return (
-    <div className="panel placeholder-panel">
-      <h2>Teams</h2>
-      <p>
-        Team health metrics, throughput, cycle time, and trend sparklines live here in the full
-        product. This prototype focuses on the new Roadmaps experience.
-      </p>
-    </div>
-  );
-}
 
 function WorkPlaceholder() {
   return (
@@ -23,14 +12,14 @@ function WorkPlaceholder() {
       <h2>Work</h2>
       <p>
         Weekly status cards for themes, initiatives, epics, and features live here. Open the
-        Roadmaps tab to explore timeline planning and stakeholder views.
+        Roadmaps or Teams tabs for interactive prototypes.
       </p>
     </div>
   );
 }
 
 export function AdoAnalysisPage() {
-  const [tab, setTab] = useState<AdoTab>('roadmaps');
+  const [tab, setTab] = useState<AdoTab>('teams');
   const { presentationMode } = usePresentation();
 
   return (
@@ -71,7 +60,7 @@ export function AdoAnalysisPage() {
         </>
       )}
 
-      {!presentationMode && tab === 'teams' && <TeamsPlaceholder />}
+      {!presentationMode && tab === 'teams' && <TeamsPage />}
       {!presentationMode && tab === 'work' && <WorkPlaceholder />}
       {(tab === 'roadmaps' || presentationMode) && <RoadmapsPage />}
     </>

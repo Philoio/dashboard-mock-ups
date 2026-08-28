@@ -1249,3 +1249,187 @@ a {
     bottom: 18px;
   }
 }
+
+
+.teams-page {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.teams-history-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-panel);
+}
+
+.history-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 260px;
+  flex: 1;
+}
+
+.history-control label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.history-control input[type="range"] {
+  flex: 1;
+  accent-color: var(--accent);
+  height: 4px;
+}
+
+.history-value {
+  min-width: 36px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.history-caption {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.teams-table-wrap {
+  overflow: auto;
+}
+
+.teams-table {
+  min-width: 980px;
+}
+
+.teams-thead,
+.teams-row {
+  display: grid;
+  grid-template-columns: minmax(200px, 1.4fr) repeat(6, minmax(110px, 1fr));
+  gap: 8px;
+  align-items: center;
+  padding: 10px 16px;
+}
+
+.teams-thead {
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: sticky;
+  top: 0;
+  background: var(--bg-panel);
+  z-index: 1;
+}
+
+.teams-thead > div {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.col-info {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  display: inline-grid;
+  place-items: center;
+  font-size: 9px;
+  color: var(--text-dim);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.teams-group-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.teams-group-header:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.group-chevron {
+  color: var(--text-dim);
+  width: 12px;
+}
+
+.group-count {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+.teams-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  min-height: 52px;
+}
+
+.teams-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.team-name-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  padding-left: 20px;
+}
+
+.team-name {
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.team-meta {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.metric-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.metric-value {
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.metric-cell.tone-good .metric-value { color: var(--accent); }
+.metric-cell.tone-warn .metric-value { color: var(--warning); }
+.metric-cell.tone-bad .metric-value { color: var(--danger); }
+.metric-cell.tone-neutral .metric-value { color: var(--text-muted); }
+
+.sparkline {
+  flex-shrink: 0;
+  opacity: 0.95;
+}
+

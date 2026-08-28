@@ -1433,3 +1433,229 @@ a {
   opacity: 0.95;
 }
 
+
+.exec-page {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.exec-summary-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.exec-summary-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.exec-summary-label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.exec-summary-card strong {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.exec-caption {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.exec-table-wrap {
+  overflow: auto;
+}
+
+.exec-table {
+  min-width: 860px;
+}
+
+.exec-thead,
+.exec-row,
+.exec-subrow {
+  display: grid;
+  grid-template-columns: minmax(240px, 1.6fr) minmax(180px, 1.1fr) 100px 120px;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+.exec-thead {
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: sticky;
+  top: 0;
+  background: var(--bg-panel);
+  z-index: 1;
+}
+
+.exec-thead > div {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.exec-row {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.exec-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.exec-portfolio-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.exec-portfolio-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.exec-portfolio-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.exec-portfolio-sub {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.exec-coverage {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.exec-coverage-track {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  min-width: 72px;
+}
+
+.exec-coverage-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+}
+
+.exec-coverage.tone-warn .exec-coverage-fill { background: var(--warning); }
+.exec-coverage.tone-bad .exec-coverage-fill { background: var(--danger); }
+
+.exec-coverage-value {
+  font-size: 13px;
+  font-weight: 600;
+  min-width: 40px;
+}
+
+.exec-coverage.tone-good .exec-coverage-value { color: var(--accent); }
+.exec-coverage.tone-warn .exec-coverage-value { color: var(--warning); }
+.exec-coverage.tone-bad .exec-coverage-value { color: var(--danger); }
+
+.exec-coverage-caption {
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.exec-people {
+  font-size: 15px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.exec-health {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.exec-health-ring {
+  transform: rotate(-90deg);
+}
+
+.exec-health-track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 3;
+}
+
+.exec-health-progress {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.exec-health.tone-warn .exec-health-progress { stroke: var(--warning); }
+.exec-health.tone-bad .exec-health-progress { stroke: var(--danger); }
+
+.exec-health-value {
+  position: absolute;
+  left: 0;
+  width: 42px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.exec-health.tone-good .exec-health-value { color: var(--accent); }
+.exec-health.tone-warn .exec-health-value { color: var(--warning); }
+.exec-health.tone-bad .exec-health-value { color: var(--danger); }
+
+.exec-subrows {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.exec-subrow {
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  padding-left: 44px;
+}
+
+.exec-sub-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .exec-summary-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

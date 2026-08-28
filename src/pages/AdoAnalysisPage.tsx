@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { usePresentation } from '../hooks/usePresentation';
 import { SegmentedTabs } from '../components/ui/SegmentedTabs';
+import { ExecutivePage } from './ExecutivePage';
 import { RoadmapsPage } from './RoadmapsPage';
 import { TeamsPage } from './TeamsPage';
 
-type AdoTab = 'teams' | 'work' | 'roadmaps';
+type AdoTab = 'teams' | 'work' | 'roadmaps' | 'executive';
 
 function WorkPlaceholder() {
   return (
@@ -12,14 +13,14 @@ function WorkPlaceholder() {
       <h2>Work</h2>
       <p>
         Weekly status cards for themes, initiatives, epics, and features live here. Open the
-        Roadmaps or Teams tabs for interactive prototypes.
+        Roadmaps, Teams, or Executive view tabs for interactive prototypes.
       </p>
     </div>
   );
 }
 
 export function AdoAnalysisPage() {
-  const [tab, setTab] = useState<AdoTab>('teams');
+  const [tab, setTab] = useState<AdoTab>('executive');
   const { presentationMode } = usePresentation();
 
   return (
@@ -54,6 +55,7 @@ export function AdoAnalysisPage() {
                 { id: 'teams', label: 'Teams' },
                 { id: 'work', label: 'Work' },
                 { id: 'roadmaps', label: 'Roadmaps' },
+                { id: 'executive', label: 'Executive view' },
               ]}
             />
           </div>
@@ -62,6 +64,7 @@ export function AdoAnalysisPage() {
 
       {!presentationMode && tab === 'teams' && <TeamsPage />}
       {!presentationMode && tab === 'work' && <WorkPlaceholder />}
+      {!presentationMode && tab === 'executive' && <ExecutivePage />}
       {(tab === 'roadmaps' || presentationMode) && <RoadmapsPage />}
     </>
   );

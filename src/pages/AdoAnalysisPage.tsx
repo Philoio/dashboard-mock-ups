@@ -33,7 +33,8 @@ export function AdoAnalysisPage() {
                 ADO <em>analysis</em>
               </h1>
               <p className="page-subtitle">
-                Team metrics, work item health, and dynamic roadmaps across projects.
+                Team metrics, delivery health scorecard, work item health, and roadmaps across
+                projects.
               </p>
             </div>
             <div className="header-actions">

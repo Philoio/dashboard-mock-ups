@@ -1660,38 +1660,10 @@ a {
   }
 }
 
-.scorecard-hero {
-  padding: 4px 2px 2px;
-}
 
-.scorecard-kicker {
-  margin: 0 0 6px;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
 
-.scorecard-title {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-}
 
-.scorecard-title em {
-  font-family: var(--font-serif);
-  font-style: italic;
-  color: var(--accent);
-  font-weight: 400;
-}
 
-.scorecard-source {
-  margin: 8px 0 0;
-  font-size: 12px;
-  color: var(--text-dim);
-  max-width: 820px;
-}
 
 .scorecard-toolbar {
   display: flex;
@@ -1790,19 +1762,7 @@ a {
   font-weight: 600;
 }
 
-.scorecard-drill {
-  border: none;
-  background: transparent;
-  color: var(--info);
-  padding: 0;
-  font-size: 11px;
-  text-align: left;
-}
 
-.scorecard-drill:hover {
-  color: #8ec8ff;
-  text-decoration: underline;
-}
 
 .scorecard-vp-row {
   width: 100%;

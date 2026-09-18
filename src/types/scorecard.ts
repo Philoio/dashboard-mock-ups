@@ -23,10 +23,3 @@ export interface ScorecardVpGroup {
   /** Pre-rolled VP totals from the baseline sheet. */
   totals: ScorecardMetrics;
 }
-
-export interface ScorecardMeta {
-  title: string;
-  organisation: string;
-  period: string;
-  sourceNote: string;
-}

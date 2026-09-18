@@ -22,6 +22,7 @@ function WorkPlaceholder() {
 export function AdoAnalysisPage() {
   const [tab, setTab] = useState<AdoTab>('executive');
   const { presentationMode } = usePresentation();
+  const isExecutive = tab === 'executive';
 
   return (
     <>
@@ -30,11 +31,20 @@ export function AdoAnalysisPage() {
           <div className="page-header">
             <div>
               <h1 className="page-title">
-                ADO <em>analysis</em>
+                {isExecutive ? (
+                  <>
+                    Delivery Health <em>Scorecard</em>
+                  </>
+                ) : (
+                  <>
+                    ADO <em>analysis</em>
+                  </>
+                )}
               </h1>
               <p className="page-subtitle">
-                Team metrics, delivery health scorecard, work item health, and roadmaps across
-                projects.
+                {isExecutive
+                  ? 'SPM portfolio coverage, delivery capacity, and Azure DevOps adoption by VP.'
+                  : 'Team metrics, work item health, and dynamic roadmaps across projects.'}
               </p>
             </div>
             <div className="header-actions">

@@ -1,12 +1,4 @@
-import type { ScorecardMeta, ScorecardVpGroup, ScoreTone, PercentValue } from '../types/scorecard';
-
-export const scorecardMeta: ScorecardMeta = {
-  title: 'Delivery Health Scorecard',
-  organisation: 'Digital & Innovation',
-  period: 'August 2026 Baseline',
-  sourceNote:
-    'Source: SPM portfolio register, ServiceNow project inventory, and Azure DevOps activity for August 2026.',
-};
+import type { ScorecardVpGroup, ScoreTone, PercentValue } from '../types/scorecard';
 
 /** RAG thresholds from the baseline sheet: Green ≥80%, Amber 50–79%, Red <50%. */
 export function scoreTone(value: PercentValue): ScoreTone {
@@ -23,7 +15,6 @@ export const scorecardMetricGuide = [
     whatWeMeasure: 'Count of ServiceNow projects mapped to the portfolio group.',
     target: '—',
     whatGoodLooksLike: 'Complete inventory of funded and in-flight SNOW projects.',
-    drillInto: null,
   },
   {
     id: 'spm-ado',
@@ -32,7 +23,6 @@ export const scorecardMetricGuide = [
       'Share of SPM items that have initiatives, epics, or features reflected in Azure DevOps.',
     target: '100%',
     whatGoodLooksLike: 'Every SPM project is actively managed in ADO with a clear backlog.',
-    drillInto: 'D1 – Area Path Alignment',
   },
   {
     id: 'ado-link',
@@ -41,7 +31,6 @@ export const scorecardMetricGuide = [
       'Share of ADO backlog items that are traceable to a funded SPM project reference.',
     target: '≥80%',
     whatGoodLooksLike: 'Backlog work is clearly linked to funded portfolio outcomes.',
-    drillInto: 'D3 – Item Quality',
   },
   {
     id: 'people',
@@ -49,7 +38,6 @@ export const scorecardMetricGuide = [
     whatWeMeasure: 'Headcount assigned to the portfolio group.',
     target: '—',
     whatGoodLooksLike: 'Accurate ownership of delivery capacity by portfolio.',
-    drillInto: 'D4 – BP Ownership',
   },
   {
     id: 'ado-users',
@@ -57,7 +45,6 @@ export const scorecardMetricGuide = [
     whatWeMeasure: 'Share of people who have made at least one change in Azure DevOps.',
     target: '≥80%',
     whatGoodLooksLike: 'Teams are actively using ADO to manage and update their work.',
-    drillInto: 'D5 – ADO Activity',
   },
 ] as const;
 

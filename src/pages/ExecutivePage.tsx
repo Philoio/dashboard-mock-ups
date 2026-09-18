@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { scorecardGroups, scorecardMeta } from '../data/scorecardData';
+import { scorecardGroups } from '../data/scorecardData';
 import { filterScorecardGroups, formatPercent, scorecardRollup } from '../utils/scorecard';
 import { ScorecardTable } from '../components/executive/ScorecardTable';
 
@@ -14,16 +14,6 @@ export function ExecutivePage() {
 
   return (
     <div className="exec-page">
-      <div className="scorecard-hero">
-        <div>
-          <p className="scorecard-kicker">{scorecardMeta.organisation}</p>
-          <h2 className="scorecard-title">
-            {scorecardMeta.title} <em>{scorecardMeta.period}</em>
-          </h2>
-          <p className="scorecard-source">{scorecardMeta.sourceNote}</p>
-        </div>
-      </div>
-
       <div className="filter-bar">
         <div className="filter-row">
           <input
@@ -32,9 +22,6 @@ export function ExecutivePage() {
             value={search}
             onChange={(event) => setSearch(event.target.value)}
           />
-          <span className="count-label">
-            {rollup.vpCount} VPs · {rollup.unitCount} portfolio units
-          </span>
         </div>
       </div>
 

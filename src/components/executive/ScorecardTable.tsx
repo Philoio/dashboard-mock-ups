@@ -111,20 +111,6 @@ export function ScorecardTable({ groups }: ScorecardTableProps) {
                 </div>
               ))}
             </div>
-            <div className="scorecard-guide-row" role="row">
-              <div className="scorecard-guide-label">Drill into the detail</div>
-              {scorecardMetricGuide.map((metric) => (
-                <div key={`drill-${metric.id}`} className="scorecard-guide-cell">
-                  {metric.drillInto ? (
-                    <button type="button" className="scorecard-drill">
-                      → {metric.drillInto}
-                    </button>
-                  ) : (
-                    <span className="score-na">—</span>
-                  )}
-                </div>
-              ))}
-            </div>
           </div>
         )}
 

@@ -1,6 +1,6 @@
-# Estate · ADO Analysis Roadmap Mock-up
+# Estate · ADO Analysis Mock-ups
 
-Interactive prototype of the Estate dashboard with a new **Roadmaps** tab alongside Teams and Work.
+Interactive Estate dashboard prototype for Azure DevOps analysis views.
 
 ## Run
 
@@ -14,14 +14,7 @@ Then open the local URL Vite prints (usually `http://localhost:5173`).
 ## What's included
 
 - Dark Estate shell matching the uploaded ADO Analysis screens
-- **Roadmaps** tab with:
-  - Parent-child hierarchy (Theme → Initiative → Epic → Feature)
-  - Timeline and Gantt modes
-  - Month / quarter / year zoom
-  - Filters for project, area path, iteration path, parent, type, labels, status, and search
-  - Personal saved views (localStorage)
-  - Shareable read-only presentation links
-  - Presentation vs Planning modes (local drag/resize, no Azure DevOps write-back)
-  - Unscheduled section for items missing start or end dates
-
-Teams and Work tabs are lightweight placeholders so the prototype stays focused on roadmaps.
+- **Teams:** health metrics table with filters, history slider, and sparklines
+- **Roadmaps:** hierarchy timeline, filters, saved views, dependencies, edit/save/cancel, presentation mode
+- **Executive view:** Delivery Health Scorecard (Digital & Innovation baseline) with VP / portfolio groups, SNOW counts, SPM↔ADO coverage, people metrics, RAG colouring, and metric guide
+- **Work:** placeholder for weekly status cards

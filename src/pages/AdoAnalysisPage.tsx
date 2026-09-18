@@ -1,21 +1,11 @@
 import { useState } from 'react';
 import { usePresentation } from '../hooks/usePresentation';
 import { SegmentedTabs } from '../components/ui/SegmentedTabs';
+import { ExecutivePage } from './ExecutivePage';
 import { RoadmapsPage } from './RoadmapsPage';
+import { TeamsPage } from './TeamsPage';
 
-type AdoTab = 'teams' | 'work' | 'roadmaps';
-
-function TeamsPlaceholder() {
-  return (
-    <div className="panel placeholder-panel">
-      <h2>Teams</h2>
-      <p>
-        Team health metrics, throughput, cycle time, and trend sparklines live here in the full
-        product. This prototype focuses on the new Roadmaps experience.
-      </p>
-    </div>
-  );
-}
+type AdoTab = 'teams' | 'work' | 'roadmaps' | 'executive';
 
 function WorkPlaceholder() {
   return (
@@ -23,14 +13,14 @@ function WorkPlaceholder() {
       <h2>Work</h2>
       <p>
         Weekly status cards for themes, initiatives, epics, and features live here. Open the
-        Roadmaps tab to explore timeline planning and stakeholder views.
+        Roadmaps, Teams, or Executive view tabs for interactive prototypes.
       </p>
     </div>
   );
 }
 
 export function AdoAnalysisPage() {
-  const [tab, setTab] = useState<AdoTab>('roadmaps');
+  const [tab, setTab] = useState<AdoTab>('executive');
   const { presentationMode } = usePresentation();
 
   return (
@@ -43,7 +33,8 @@ export function AdoAnalysisPage() {
                 ADO <em>analysis</em>
               </h1>
               <p className="page-subtitle">
-                Team metrics, work item health, and dynamic roadmaps across projects.
+                Team metrics, delivery health scorecard, work item health, and roadmaps across
+                projects.
               </p>
             </div>
             <div className="header-actions">
@@ -65,14 +56,16 @@ export function AdoAnalysisPage() {
                 { id: 'teams', label: 'Teams' },
                 { id: 'work', label: 'Work' },
                 { id: 'roadmaps', label: 'Roadmaps' },
+                { id: 'executive', label: 'Executive view' },
               ]}
             />
           </div>
         </>
       )}
 
-      {!presentationMode && tab === 'teams' && <TeamsPlaceholder />}
+      {!presentationMode && tab === 'teams' && <TeamsPage />}
       {!presentationMode && tab === 'work' && <WorkPlaceholder />}
+      {!presentationMode && tab === 'executive' && <ExecutivePage />}
       {(tab === 'roadmaps' || presentationMode) && <RoadmapsPage />}
     </>
   );

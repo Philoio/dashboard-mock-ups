@@ -31,16 +31,16 @@ export function ExecutivePage() {
           <strong>{rollup.snowProjects.toLocaleString()}</strong>
         </div>
         <div className="exec-summary-card">
-          <span className="exec-summary-label">SPM managed in ADO</span>
-          <strong>{formatPercent(rollup.spmManagedInAdoPct)}</strong>
+          <span className="exec-summary-label">Epics without funding</span>
+          <strong>{formatPercent(rollup.epicsWithoutFundingPct)}</strong>
         </div>
         <div className="exec-summary-card">
-          <span className="exec-summary-label">ADO linked to SPM</span>
-          <strong>{formatPercent(rollup.adoLinkedToSpmPct)}</strong>
+          <span className="exec-summary-label">Backlog without funding</span>
+          <strong>{formatPercent(rollup.backlogWithoutFundingPct)}</strong>
         </div>
         <div className="exec-summary-card">
-          <span className="exec-summary-label">People using ADO</span>
-          <strong>{formatPercent(rollup.peopleUsingAdoPct)}</strong>
+          <span className="exec-summary-label">SPM work not in ADO</span>
+          <strong>{formatPercent(rollup.spmWorkNotInAdoPct)}</strong>
         </div>
       </div>
 

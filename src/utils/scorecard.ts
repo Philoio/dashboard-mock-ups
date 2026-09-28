@@ -25,7 +25,6 @@ export function filterScorecardGroups(
 
 export function scorecardRollup(groups: ScorecardVpGroup[]) {
   const snowProjects = groups.reduce((sum, group) => sum + group.totals.snowProjects, 0);
-  const totalPeople = groups.reduce((sum, group) => sum + group.totals.totalPeople, 0);
 
   const avg = (picker: (group: ScorecardVpGroup) => PercentValue) => {
     const values = groups
@@ -39,9 +38,8 @@ export function scorecardRollup(groups: ScorecardVpGroup[]) {
     vpCount: groups.length,
     unitCount: groups.reduce((sum, group) => sum + group.units.length, 0),
     snowProjects,
-    totalPeople,
-    spmManagedInAdoPct: avg((group) => group.totals.spmManagedInAdoPct),
-    adoLinkedToSpmPct: avg((group) => group.totals.adoLinkedToSpmPct),
-    peopleUsingAdoPct: avg((group) => group.totals.peopleUsingAdoPct),
+    epicsWithoutFundingPct: avg((group) => group.totals.epicsWithoutFundingPct),
+    backlogWithoutFundingPct: avg((group) => group.totals.backlogWithoutFundingPct),
+    spmWorkNotInAdoPct: avg((group) => group.totals.spmWorkNotInAdoPct),
   };
 }

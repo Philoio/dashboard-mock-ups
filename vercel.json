@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/scorecard", "destination": "/index.html" },
+    { "source": "/scorecard/", "destination": "/index.html" }
+  ]
+}
